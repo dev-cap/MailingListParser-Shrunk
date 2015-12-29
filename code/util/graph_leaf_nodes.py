@@ -35,5 +35,7 @@ with open('clean_data.json', 'r') as fil:
 
     fil.close()
 
-for msg_id in leaf_msgs:
-    print("{0} : {1}".format(msg_id, msg_ref_map[msg_id]))
+with open('graph_leaf_nodes.csv', 'w') as csv_file:
+    for msg_id in leaf_msgs:
+        csv_file.write("{0};{1}\n".format(msg_id, msg_ref_map[msg_id]))
+    csv_file.close()
