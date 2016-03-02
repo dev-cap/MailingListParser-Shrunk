@@ -1,5 +1,11 @@
+from itertools import islice, chain
 import json
-from util.read_json import lines_per_n
+
+
+def lines_per_n(f, n) :
+
+    for line in f :
+        yield ''.join(chain([line], islice(f, n-1)))
 
 # The following set stores all the mail UIDs and the corresponding time as a semi-colon separated string
 nodes = set()
