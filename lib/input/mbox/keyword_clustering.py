@@ -7,7 +7,7 @@ from nltk.stem import WordNetLemmatizer
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from author_analysis.ranking import generate_author_ranking
+from analysis.author import generate_author_ranking
 from util import custom_stopwords
 from util.read_utils import *
 
