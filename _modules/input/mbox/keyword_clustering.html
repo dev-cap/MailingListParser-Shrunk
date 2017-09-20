@@ -63,11 +63,8 @@
 <div class="viewcode-block" id="get_top_authors"><a class="viewcode-back" href="../../../input.mbox.html#input.mbox.keyword_clustering.get_top_authors">[docs]</a><span class="k">def</span> <span class="nf">get_top_authors</span><span class="p">(</span><span class="n">top_n</span><span class="p">,</span> <span class="n">json_filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">    Gets top n authors based on the ranking generated from generate_author_ranking in analysis.author.ranking</span>
-
-<span class="sd">    :param top_n: Number of top authors to be returned.</span>
-<span class="sd">    :param json_filename: The JSON file from which author scores are generated.</span>
-<span class="sd">    :return: Top authors and indices</span>
+<span class="sd">    </span>
+<span class="sd">    :return:Top authors and indices</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">top_authors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">top_authors_index</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -83,19 +80,15 @@
 
 
 <div class="viewcode-block" id="save_sparse_csr"><a class="viewcode-back" href="../../../input.mbox.html#input.mbox.keyword_clustering.save_sparse_csr">[docs]</a><span class="k">def</span> <span class="nf">save_sparse_csr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function writes a numpy matrix to a file in a sparse format.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">data</span> <span class="p">,</span><span class="n">indices</span><span class="o">=</span><span class="n">array</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span>
              <span class="n">indptr</span> <span class="o">=</span><span class="n">array</span><span class="o">.</span><span class="n">indptr</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_message_body"><a class="viewcode-back" href="../../../input.mbox.html#input.mbox.keyword_clustering.get_message_body">[docs]</a><span class="k">def</span> <span class="nf">get_message_body</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Gets the message body of the message.</span>
 
-<span class="sd">    :param message: The message whose body is to be extracted.</span>
-<span class="sd">    :return: Message Body</span>
+<span class="sd">    :param message:</span>
+<span class="sd">    :return:Message Body</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">msg_body</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">is_multipart</span><span class="p">():</span>
@@ -152,11 +145,10 @@
 <span class="sd">    all the authors and the column set contains the authors. If a term does not appear in a document, the corresponding</span>
 <span class="sd">    matrix entry would be zero. The resulting matrix is called term-document matrix. Then tf-idf analysis is performed</span>
 <span class="sd">    on the term-document matrix. Finally the top-10 words of each author is listed by their weight values.</span>
+<span class="sd">    :param mbox_filename: Contains the absolute or relative address of the MBOX file to be opened</span>
+<span class="sd">    :return: Term Document Matrix: The columns of the matrix are the users and the rows of the matrix are the keywords.</span>
 <span class="sd">    Each entry corresponds to the tf-idf normalized coefficient of the keyword for a user. If a keyword is not present</span>
 <span class="sd">    in the top-10 keywords of a user, then the corresponding matrix entry would be zero. Also returns the feature names.</span>
-
-<span class="sd">    :param mbox_filename: Contains the absolute or relative address of the MBOX file to be opened.</span>
-<span class="sd">    :return: Term Document Matrix: The columns of the matrix are the users and the rows of the matrix are the keywords.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">english_stopwords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span> <span class="o">|</span> <span class="n">custom_stopwords</span><span class="o">.</span><span class="n">common_words</span> <span class="o">|</span> <span class="n">custom_stopwords</span><span class="o">.</span><span class="n">custom_words</span>
     <span class="n">email_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\w\.-]+@[\w\.-]+&#39;</span><span class="p">)</span>
